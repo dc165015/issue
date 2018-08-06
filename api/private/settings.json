@@ -1,0 +1,40 @@
+{
+  "accounts-phone": {
+    "verificationCodeLength": 4,
+    "verificationMaxRetries": 3,
+    "verificationWaitTime": 10,
+    "verificationRetriesWaitTime": 100,
+    "adminPhoneNumbers": ["+8613917189885"],
+    "phoneVerificationMasterCode": "1234"
+  },
+  "twilio":{
+    "FROM": "+8613917189885",
+    "ACCOUNTS_SID":"",
+    "AUTH_TOCKEN":""
+  },
+  "public": {
+    "facebook": {
+      "permissions": [
+        "public_profile",
+        "user_friends",
+        "email"
+      ],
+      "profileFields": [
+        "name",
+        "gender",
+        "location"
+      ]
+    }
+  },
+  "private": {
+    "fcm": {
+      "key": "AIzaSyBnmvN5WNv3rAaLra1RUr9vA5k0pNp0KuY"
+    },
+    "oAuth": {
+      "facebook": {
+        "appId": "1800004730327605",
+        "secret": "57f57a93e8847896a0b779c0d0cdfa7b"
+      }
+    }
+  }
+}

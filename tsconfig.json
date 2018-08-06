@@ -1,25 +1,53 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
       "dom",
-      "es2015"
+      "es2015",
+      "es2016.array.include"
     ],
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
+    "paths": {
+      "api/*": ["./api/server/*"],
+      "bookstore/*": ["./bookstore/server/*"],
+      "components/*":["./src/components/*"],
+      "directives/*":["./src/directives/*"],
+      "pages/*":["./src/pages/*"],
+      "providers/*":["./src/providers/*"],
+    },
     "sourceMap": true,
-    "target": "es5"
+    "target": "es5",
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "noImplicitAny": false,
+    "noEmitHelpers": false,
+    "types": [
+      "@types/meteor",
+      "@types/meteor-accounts-phone",
+      "@types/meteor-collection-hooks",
+      "@types/meteor-publish-composite"
+    ]
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "api/**/*.ts",
+    "bookstore/**/*.ts"
   ],
   "exclude": [
     "node_modules",
     "src/**/*.spec.ts",
-    "src/**/__tests__/*.ts"
+    "src/**/__tests__/*.ts",
+    "api/node_modules",
+    "api/packages",
+    "api",
+    "bookstore/node_modules",
+    "bookstore/packages",
+    "bookstore",
   ],
   "compileOnSave": false,
   "atom": {
