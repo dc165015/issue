@@ -1,0 +1,141 @@
+page-login {
+    // form {
+    //     margin: 20% 10%;
+    //     input {
+    //         font-size: 1.2em;
+    //         font-weight: bold;
+    //         letter-spacing: 0.2em;
+    //     }
+
+    //     ion-item.item-block {
+    //         margin: 2em 0 0 0;
+    //         border: none !important;
+    //         padding: 0;
+    //     }
+
+    .ng-valid,
+    .ng-invalid {
+        box-shadow: unset;
+    }
+
+    .button-verify {
+        font-size: 1.2rem !important;
+    }
+
+    .button-login {
+        margin-top: 2rem;
+        height: 3rem;
+    }
+
+    //     .item-terms {
+    //         position: absolute;
+    //         bottom: 10%;
+    //     }
+
+    //     .label-terms {
+    //         opacity: 0.8;
+    //         font-size: 0.8em;
+    //     }
+
+    // }
+    ion-header {
+        @include header-styles(color($colors, header-alt, base), color($colors, header-alt, contrast));
+    }
+
+    .forms-validations-content {
+        background-color: color($colors, background, base);
+
+        .sample-form {
+            .form-section {
+                padding: 0px 14px;
+
+                .item:first-child {
+                    margin-top: 20px;
+                }
+            }
+
+            ion-item {
+                @include basic-input-style(color($colors, background, base), $theme-color-3, $white-d);
+                @include basic-select-style(color($colors, background, base), $theme-color-3, $white-d);
+
+                &.item {
+                    margin-top: 14px;
+
+                    .item-inner {
+                        ion-icon {
+                            color: $theme-color-2;
+                        }
+                    }
+                }
+
+                &:first-of-type {
+                    margin-top: 0px;
+                }
+            }
+
+            .form-action-button {
+                margin: 0px;
+                margin-top: 20px;
+
+                @include call-to-action-button-styles(color($colors, button, base), color($colors, button, contrast));
+            }
+        }
+
+        // End generic styles
+
+        .validations-form {
+            .form-section {
+                &:not(:first-child) {
+                    margin-top: 40px;
+                }
+
+                &:last-of-type {
+                    margin-bottom: 40px;
+                }
+
+                .section-title {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .item-terms {
+                .item-inner {
+                    border-bottom: none;
+
+                    ion-label {
+                        white-space: normal;
+                        color: $white-d;
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .validation-errors {
+                .error-message {
+                    color: color($colors, danger);
+                    font-size: 12px;
+                    font-weight: 500;
+                    line-height: 1.6rem;
+                    position: relative;
+                    padding-left: 22px;
+                    margin-bottom: 10px;
+
+                    &:first-child {
+                        margin-top: 10px;
+                    }
+
+                    &::before {
+                        font-family: "Ionicons";
+                        content: "\f19f";
+                        font-size: 16px;
+                        width: 16px;
+                        height: 16px;
+                        text-align: center;
+                        position: absolute;
+                        left: 0px;
+                    }
+                }
+            }
+        }
+    }
+}

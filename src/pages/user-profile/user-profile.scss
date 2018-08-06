@@ -1,0 +1,110 @@
+page-user-profile {
+  .profile-content {
+    background-color: color($colors, background, base);
+
+    .user-details {
+      @include element-shadow();
+      padding-bottom: 4%;
+      background-color: $white;
+
+      .user-image-content {
+        padding: 4% 4% 0;
+        align-items: center;
+
+        ion-col {
+          margin: 0 auto;
+          .user-image {
+            border-radius: 50%;
+            max-height: 200px;
+            display: block;
+            margin: 0 auto;
+          }
+        }
+      }
+      .user-bio-row {
+        padding: 4%;
+
+        .user-name {
+          font-size: 1.6rem;
+          font-weight: 500;
+          letter-spacing: 0.2px;
+          color: $theme-color-1;
+          margin: 0px;
+        }
+
+        .user-location {
+          font-size: 1.2rem;
+          font-weight: 500;
+          letter-spacing: 0.2px;
+          color: $white-d;
+          display: block;
+          text-align: right;
+          line-height: 1.6;
+        }
+
+        .user-description {
+          font-size: 1.2rem;
+          line-height: 1.6;
+          letter-spacing: 0.2px;
+          color: $white-d;
+          margin: 10px 0px 0px;
+        }
+      }
+
+      .user-content-segment {
+        @include segment-button-styles($theme-color-2);
+
+        .segment-button {
+          // @include segment-text-styles($white-d);
+          font-size: 1.5rem;
+          line-height: 1.2rem !important;
+
+          ion-icon {
+            font-size: 1.5rem;
+            line-height: 1rem;
+          }
+
+          .segment-title,
+          .segment-owned-icon {
+            padding: 5px;
+          }
+        }
+      }
+    }
+
+    .user-content {
+      .list-view {
+        .list-item {
+          @include basic-card-styles($white-d);
+
+          padding: 12px 0px;
+
+          ion-card {
+            margin-top: 0px;
+            margin-bottom: 0px;
+          }
+
+          .item-date {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: $white-d;
+            margin: 0px 18px 4px;
+            display: block;
+          }
+        }
+      }
+
+      .grid-view {
+        padding: 8px 0px 2px;
+
+        .grid-row {
+          padding: 0px 5px;
+
+          .grid-item {
+            padding: 0px 3px 6px;
+          }
+        }
+      }
+    }
+  }
+}

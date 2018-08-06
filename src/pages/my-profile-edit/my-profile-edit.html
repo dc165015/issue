@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>我的简介</ion-title>
+    <ion-buttons end [hidden]="!settingsForm.dirty" (click)="save()">
+      <button ion-button type="submit">保存</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="settings-content">
+  <div>
+    <ion-row>
+      <ion-col col-4 offset-4>
+        <preload-image class="user-image" [ratio]="{w:1, h:1}" [src]="user.picture" [zoom]="true"></preload-image>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-2 offset-5>
+        <div text-center (click)="selectProfilePicture()" class="avatar-change" >更换</div>
+      </ion-col>
+    </ion-row>
+  </div>
+  <form [formGroup]="settingsForm" class="settings-form" (ngSubmit)="onSubmit()">
+    <ion-list class="user-data-content">
+      <ion-item>
+        <ion-label>称呼</ion-label>
+        <ion-input type="text" formControlName="name" clearInput placeholder="这里写自己的名字"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.name">
+          <div class="error-message" *ngIf="settingsForm.get('name').hasError(validation.type) && (settingsForm.get('name').dirty || settingsForm.get('name').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label>简介</ion-label>
+        <ion-textarea formControlName="description" rows="2" placeholder="这里介绍自己"></ion-textarea>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.description">
+          <div class="error-message" *ngIf="settingsForm.get('description').hasError(validation.type) && (settingsForm.get('description').dirty || settingsForm.get('description').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <!-- <ion-list class="user-preferences-row"> -->
+    </ion-list>
+
+
+  </form>
+
+</ion-content>

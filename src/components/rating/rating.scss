@@ -1,0 +1,34 @@
+rating {
+    ul li {
+      display: inline;
+      border: 0px;
+      background: none;
+      padding: 5px 10px;
+      color: black;
+      opacity: 0.8;
+    }
+    ul li i {
+      font-size: 30px;
+    }
+
+
+  }
+
+  .small-rating {
+    height: 1em;
+
+    ul {
+      padding: 0;
+      margin: 0.5rem 0;
+    }
+
+    ul li {
+      padding: 0px 0px !important;
+      // background: none;
+      display: inline-flex !important;
+      ion-icon {
+        opacity: 0.5;
+        font-size: 0.9rem;
+      }
+    }
+}

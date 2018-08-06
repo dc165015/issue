@@ -1,0 +1,54 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>注册和登录</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only class='menu'>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="forms-validations-content">
+  <form #loginForm="ngForm" class="sample-form validations-form">
+    <section class="form-section">
+      <ion-list>
+
+        <ion-item>
+          <!-- When using the ngModel within form tags, you'll also need to supply a name attribute so that the control can be registered with the parent form under that name. -->
+          <!-- pattern expression has to be escaped, so use \\d instead of \\d -->
+          <ion-input type="tel" [(ngModel)]="phone" #phoneCtrl="ngModel" name="phone" placeholder="手机号" required pattern="^\\d{11}$"
+           clearInput autofocus></ion-input>
+        </ion-item>
+        <div class="validation-errors" *ngIf="phoneCtrl.errors && (phoneCtrl.dirty || phoneCtrl.touched)">
+          <div class="error-message" *ngIf="phoneCtrl.errors['required']">必须填写手机号</div>
+          <div class="error-message" *ngIf="phoneCtrl.errors['pattern']">手机号必须是11位数字</div>
+        </div>
+
+        <ion-item>
+          <button item-end ion-button clear class="button-verify" [disabled]="waiting" (click)="phoneCtrl.valid && verify()">{{codeButtonText}}</button>
+          <ion-input type="text" [(ngModel)]="code" #codeCtrl="ngModel" name="code" placeholder="验证码" required pattern="^\\d{4}$" ></ion-input>
+        </ion-item>
+        <div class="validation-errors" *ngIf="codeCtrl.errors && (codeCtrl.dirty || codeCtrl.touched)">
+          <div class="error-message" *ngIf="codeCtrl.errors['required']">必须提供短信验证码</div>
+          <div class="error-message" *ngIf="codeCtrl.errors['pattern']">验证码必须是4位数字</div>
+        </div>
+
+        <button ion-button class="button-login" block round (click)="doLogin()" [disabled]="!loginForm.valid" type="submit">登录</button>
+
+        <ion-item class="item-terms">
+          <ion-label color="dark" class="label-terms">本人理解并同意遵守
+            <a>《使用条款》</a>
+          </ion-label>
+          <ion-checkbox [(ngModel)]="terms" #termsCtrl="ngModel" name="terms" checked pattern="true"></ion-checkbox>
+        </ion-item>
+        <div class="validation-errors" *ngIf="termsCtrl.errors && (termsCtrl.dirty || termsCtrl.touched)">
+          <div class="error-message" *ngIf="termsCtrl.errors['pattern']">必须同意使用条款才能使用</div>
+        </div>
+
+      </ion-list>
+    </section>
+  </form>
+</ion-content>

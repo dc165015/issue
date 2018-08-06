@@ -1,0 +1,63 @@
+page-book-profile {
+  ion-thumbnail {
+    width: 9em;
+    height: 12em;
+
+    img {
+      width:unset !important;
+      height:unset !important;
+    }
+  }
+
+  ion-label {
+    white-space: inherit;
+  }
+
+  .item-inner {
+    display: list-item;
+  }
+
+  span {
+    display: inline-block;
+    font-size: 0.8em;
+    margin-left: 10px;
+  }
+
+  .conditions {
+    padding-top: 10px;
+    font-size: 0.8em;
+    opacity: 0.6;
+  }
+
+  .summary {
+    margin: 0 0;
+    font-size: 0.8em;
+    opacity: 0.95;
+    width: 100%;
+    text-indent: 2em;
+    text-overflow: ellipsis;
+    display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+    -webkit-line-clamp: 5; /** 显示的行数 **/
+    overflow: hidden;  /** 隐藏超出的内容 **/
+  }
+
+  .rate {
+    text-align: center;
+    opacity: 0.8;
+    ul {
+      padding: 0;
+    }
+    margin-bottom: 1em;
+
+    .item-inner {
+      border-bottom: 0 !important;
+
+
+    .rating-score{
+      font-size: 1.5em;
+      font-weight: bolder;
+    }
+  }
+}
+}

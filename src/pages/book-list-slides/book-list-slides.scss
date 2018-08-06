@@ -1,0 +1,22 @@
+page-book-list-slides {
+
+  ion-slide {
+    overflow-y: auto;
+  }
+
+  // hide top border of slides with refresher
+  .has-refresher > .scroll-content{
+    border-top: 0px;
+  }
+
+  .swiper-slide {
+    align-items: flex-start;
+  }
+
+  .button-tag {
+    border-color: transparent;
+    border-radius: 50px;
+    color: black;
+    opacity: 0.9;
+  }
+}

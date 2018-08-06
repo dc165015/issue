@@ -1,0 +1,49 @@
+user-block-small {
+  .block {
+    // margin: 0 2px !important;
+    // background-color: white !important;
+    //padding: 1em;
+    font-size: 0.7em;
+    // width: calc(100%-10px) !important;
+
+    span {
+      width: 7em;
+      margin: 0 auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+      text-align: left;
+      // margin: 0 0.5em;
+      line-height: 1.4em;
+      height: 2.8em;
+      display: -webkit-box;
+      text-overflow: ellipsis;
+      display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+      -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+      -webkit-line-clamp: 2; /** 显示的行数 **/
+      overflow: hidden;  /** 隐藏超出的内容 **/
+    }
+
+    .img-container {
+      width:  7em;
+      height: 7em;
+      background-color: transparent;
+      display: inline-block;
+
+      img {
+        width: 7em;
+        clear: both;
+        height: 7em;
+        // max-height: 10.2em;
+        border-radius: 50%;
+      }
+
+      img.shadow {
+        -moz-box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+       }
+    }
+  }
+
+}

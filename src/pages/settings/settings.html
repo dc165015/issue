@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="showChatPage()">
+        <ion-icon name="ios-notifications-outline"> </ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>设置</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="showChatPage()">
+        <ion-icon name="ios-chatboxes-outline"> </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="settings-content">
+  <ion-list class="user-data-content">
+    <ion-item (click)="openMyPofileEditPage()">
+      <ion-avatar item-start>
+        <preload-image class="user-image" [ratio]="{w:1, h:1}" [src]="user.picture" alt="this is the image" title="IMAGE!"></preload-image>
+      </ion-avatar>
+      <div class="nickname">{{user.nickname}}</div>
+      <div class="description">{{user.profile.description}}</div>
+      <ion-icon name="arrow-forward" item-end> </ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item (click)="openMyTermsEditPage()">
+      <div>他人借书时必须遵守的条款</div>
+      <ion-icon name="arrow-forward" item-end> </ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <div (click)="showTermsModal()">本软件服务使用条款</div>
+    </ion-item>
+
+    <ion-item>
+      <div (click)="logout()">退出</div>
+    </ion-item>
+  </ion-list>
+</ion-content>

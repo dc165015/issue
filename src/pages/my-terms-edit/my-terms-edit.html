@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>他人借书条款</ion-title>
+    <ion-buttons end [hidden]="!settingsForm.dirty" (click)="save()">
+      <button ion-button type="submit">保存</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="settings-content">
+  <div class="user-image-content">
+    <form [formGroup]="settingsForm" class="settings-form" (ngSubmit)="onSubmit()">
+      <ion-list class="user-data-content">
+        <ion-item>
+          <ion-textarea formControlName="myTerms" rows="25" placeholder="这里制定他人向自己借书的时候的必须遵守的规则"></ion-textarea>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.myTerms">
+            <div class="error-message" *ngIf="settingsForm.get('myTerms').hasError(validation.type) && (settingsForm.get('myTerms').dirty || settingsForm.get('myTerms').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>

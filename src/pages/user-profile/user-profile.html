@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only *ngIf="user.isMe">
+        <ion-icon name="notifications-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>{{user.nickname}}</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="openChatsPage($event)">
+        <ion-icon name="ios-chatboxes-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="profile-content">
+  <div class="user-details">
+    <div class="user-image-content">
+      <ion-row class="user-image-row" padding-horizontal>
+        <ion-col no-padding width-30>
+          <preload-image class="user-image" [ratio]="{w:1, h:1}" [src]="user.picture" ></preload-image>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-row wrap class="user-bio-row">
+      <ion-col no-padding width-100>
+        <div class="user-description" text-center> {{user.profile?.description}} </div>
+      </ion-col>
+    </ion-row>
+    <ion-segment class="user-content-segment" [(ngModel)]="display" (ionChange)="onSegmentChanged($event)">
+      <ion-segment-button value="borrowed" (ionSelect)="onSegmentSelected($event)">
+        <div class="segment-title">借入 {{ user.profile?.borrowedCount }} 册</div>
+        <rating setter="user.profile.borrowedRate" class="small-rating"></rating>
+      </ion-segment-button>
+      <ion-segment-button value="userCopies" (ionSelect)="onSegmentSelected($event)">
+        <div class="segment-title">藏书 {{ user.profile?.ownedCopiesCount }} 册</div>
+        <div class="segment-owned-icon" outline>
+          <ion-icon name="book"></ion-icon>
+        </div>
+      </ion-segment-button>
+      <ion-segment-button value="lent" (ionSelect)="onSegmentSelected($event)">
+        <div class="segment-title">借出 {{ user.profile?.lentCount }} 册</div>
+        <rating setter="user.profile.lentRate" class="small-rating"></rating>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="display" class="user-content">
+
+    <div *ngSwitchCase="'borrowed'" class="grid-view">
+      <ion-row wrap class="grid-row" *ngIf="borrowedOrders.length"></ion-row>>
+        <ion-col width-33 class="grid-item" *ngFor="let book of borrowedOrders">
+          <!-- <book-block-small [book]='book'></book-block-small> -->
+        </ion-col>
+      </ion-row>
+      <div *ngIf="!borrowedOrders.length">你还没借书给过他</div>
+
+      <ion-infinite-scroll (ionInfinite)="doInfinite()">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+
+    <div *ngSwitchCase="'userCopies'" class="grid-view">
+      <ion-row wrap class="grid-row" *ngIf="copies.length">
+        <ion-col width-33 class="grid-item" *ngFor="let book of copies">
+            <book-block-small [book]='book'></book-block-small>
+        </ion-col>
+      </ion-row>
+      <div *ngIf="!copies.length">暂无藏书，问问他能否把书共享出来!</div>
+
+      <ion-infinite-scroll (ionInfinite)="doInfinite()">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+
+    <div *ngSwitchCase="'lent'" class="grid-view">
+      <ion-row wrap class="grid-row" *ngIf="lentOrders.length">
+        <ion-col width-33 class="grid-item" *ngFor="let book of lentOrders">
+            <!-- <book-block-small [book]='book'></book-block-small> -->
+        </ion-col>
+      </ion-row>
+      <div *ngIf="!lentOrders.length">他还没借书给过你</div>
+
+      <ion-infinite-scroll (ionInfinite)="doInfinite()">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+
+  </div>
+</ion-content>

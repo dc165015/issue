@@ -1,0 +1,38 @@
+<ion-header #communityListHeader no-border transparent>
+  <ion-navbar transparent>
+    <ion-buttons left>
+      <button ion-button icon-only class='search' (click)="pushSearchPage($event)">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title #slideTitle text-center (click)="findMembers()">{{title}}</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only class='menu' (click)="popMenu($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce #containerContent>
+  <ion-slides #mySlider pager=true initialSlide=1 loop=false (ionSlideDidChange)="onSlideDidChange($event)">
+    <ion-slide>
+      <!-- TODO: 添加community搜索 @v1 -->
+      <ion-list padding>
+        <button class="button-community" ion-item-start *ngFor="let community of communities" ion-button strong color="primary" [outline]="!isSelected(community)" (click)="updateSelection($event, community)">{{community.name}}</button>
+      </ion-list>
+    </ion-slide>
+    <ion-slide *ngFor="let community of selectedCommunities" hide-header [header]="communityListHeader" [containerContent]="containerContent">
+      <ion-grid>
+        <ion-row align-item-start>
+          <ion-col col-4 col-md-3 col-xl-2 *ngFor="let user of groups.get(community)">
+            <user-block-small [user]='user'></user-block-small>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-infinite-scroll (ionInfinite)="$event.waitFor(loadMore())">
+        <ion-infinite-scroll-content loadingSpinner="bubbles"></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

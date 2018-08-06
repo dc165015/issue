@@ -1,0 +1,78 @@
+page-my-profile-edit {
+    .settings-content
+    {
+      background-color: color($colors, background, base);
+
+      .avatar-change
+      {
+        color: #999999;
+      }
+
+      .user-data-content
+      {
+        padding: 0px;
+        margin-bottom: 20px;
+
+        ion-item {
+          @include basic-select-style(color($colors, background, base), $theme-color-3, $white-d);
+
+          border: none !important;
+          padding: 0px 20px;
+          @include element-shadow();
+
+          .item-inner
+          {
+            border: none;
+            box-shadow: unset;
+
+            ion-input input,
+            ion-textarea textarea {
+              width: 100%;
+              font-size: 1.6rem;
+              line-height: 1.4;
+              color: $theme-color-3;
+            }
+
+            .label {
+              font-size: 1.8rem;
+              color: $text-color;
+            }
+          }
+
+        }
+
+        .validation-errors
+        {
+          .error-message
+          {
+            color: color($colors, danger);
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.6rem;
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 10px;
+
+            &:first-child
+            {
+              margin-top: 10px;
+            }
+
+            &::before
+            {
+              font-family: "Ionicons";
+              content: "\f19f";
+              font-size: 16px;
+              width: 16px;
+              height: 16px;
+              text-align: center;
+              position: absolute;
+              left: 0px;
+            }
+          }
+        }
+
+      }
+}
+
+}

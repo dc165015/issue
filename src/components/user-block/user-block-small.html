@@ -1,0 +1,9 @@
+  <div class="block" *ngIf="user" (click)="openDetailsPage($event)">
+    <div class="img-container" center>
+      <preload-image class="shadow" [ratio]="{w:1, h:1}"  [src]="user.picture"></preload-image>
+    </div>
+    <rating [setter]="user.rating" class="small-rating">
+      <!-- (ngModelChange)="onModelChange($event)" -->
+    </rating>
+    <div class="title"><span>{{user.nickname}}</span></div>
+  </div>

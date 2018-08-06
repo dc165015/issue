@@ -1,0 +1,47 @@
+
+<ion-header no-border transparent>
+  <ion-navbar #navBar transparent>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-thumbnail item-start>
+      <img [src]="book.images.large" imageViewer>
+    </ion-thumbnail>
+    <h1>{{book.title}}</h1>
+    <h2 *ngIf="book.subtitle">{{book.subtitle}}</h2>
+    <br/>
+    <h3>{{authorAndTranslator}}</h3>
+    <div class='conditions'>{{otherConditions}}</div>
+  </ion-item>
+  <ion-item full>
+    <!-- <h2>简介</h2> -->
+    <div class="summary">{{shortSummary}}</div>
+  </ion-item>
+  <ion-item class="rate">
+    <rating [setter]="book.rating"></rating>
+    <h2>豆瓣：<span class="rating-score">{{book.rating.average}}</span> 分  {{book.rating.numRaters}} 人</h2>
+  </ion-item>
+  <!-- <ion-item>
+    <ion-slides slidesPerView=5 spaceBetween=5 >
+      <ion-slide *ngFor="let picsrc of book.pictures">
+        <preload-image [src]="picsrc" [ratio]="{w:7,h:10.2}" > </preload-image>
+      </ion-slide>
+    </ion-slides>
+  </ion-item> -->
+  <ion-row>
+  </ion-row>
+  <ion-item>
+    标签：<span *ngFor="let tag of mainTags"> {{tag.name}} </span>
+    <!-- <button ion-button outline clear small *ngFor="let tag of mainTags">{{tag.name}}</button> -->
+  </ion-item>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button block full><h4> 借 阅  (共4位书主) </h4></button>
+  </ion-toolbar>
+</ion-footer>
